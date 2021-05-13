@@ -11,6 +11,7 @@ public class MyFrame extends JFrame {
 
         setSize(400,200);
         setVisible(true);
+        //v objekte prepisem  metodu
         addWindowListener(new WindowAdapter()
                           {
                               public void windowClosing(WindowEvent e){
