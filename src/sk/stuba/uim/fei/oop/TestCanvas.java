@@ -7,21 +7,21 @@ import java.awt.event.MouseMotionListener;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class TestCanvas extends Canvas {
+public class TestCanvas extends Canvas implements MouseListener{
 
-//mnozina objektov
+    public RectangleButtons button;
+    //mnozina objektov
     public HashSet<Rectangle> OurObject = new HashSet<Rectangle>();
 
-    public void NewObjects(){
-        int i=0;
-        int j=20;
-        while(i<5){
-            //vytvorime novy objekt
-            OurObject.add(new Rectangle(10,j,20,20));
-            j+=30;
-            i++;
-        }
+
+    public TestCanvas(RectangleButtons button){
+        super();
+        addMouseListener(this);
+        this.button = button;
     }
+
+
+
 
     public void paint(Graphics g){
 
@@ -32,4 +32,32 @@ public class TestCanvas extends Canvas {
     }
 
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(button.WannaRect) {
+            OurObject.add(new Rectangle(e.getX(), e.getY(), 20, 20));
+            repaint();
+            button.WannaRect=false;
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }
