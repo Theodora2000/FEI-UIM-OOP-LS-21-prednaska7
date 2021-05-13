@@ -21,12 +21,10 @@ public class TestCanvas extends Canvas implements MouseListener{
     }
 
 
-
-
     public void paint(Graphics g){
 
       for(Rectangle  ActRect : OurObject){
-          g.drawRect(ActRect.x, ActRect.y, ActRect.width, ActRect.height);
+          g.drawRect(ActRect.x , ActRect.y , ActRect.width, ActRect.height);
       }
 
     }
