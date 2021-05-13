@@ -25,16 +25,10 @@ public class TestCanvas extends Canvas {
 
     public void paint(Graphics g){
 
-        Rectangle AcrRect;
-        Iterator it = OurObject.iterator();
+      for(Rectangle  ActRect : OurObject){
+          g.drawRect(ActRect.x, ActRect.y, ActRect.width, ActRect.height);
+      }
 
-        while(it.hasNext()){
-            Object Actual  = it.next();
-            if (Actual instanceof Rectangle){
-                AcrRect = (Rectangle) Actual;
-                g.drawRect(AcrRect.x, AcrRect.y, AcrRect.width, AcrRect.height);
-            }
-        }
     }
 
 
