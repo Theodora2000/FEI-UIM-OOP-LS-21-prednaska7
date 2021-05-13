@@ -1,7 +1,8 @@
 package sk.stuba.uim.fei.oop;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MyFrame extends JFrame {
 
@@ -10,7 +11,13 @@ public class MyFrame extends JFrame {
 
         setSize(400,200);
         setVisible(true);
-        addWindowListener(new Closer());
+        addWindowListener(new WindowAdapter()
+                          {
+                              public void windowClosing(WindowEvent e){
+                                  System.exit(0);
+                              }
+                          }
+        );
 
 
     }
