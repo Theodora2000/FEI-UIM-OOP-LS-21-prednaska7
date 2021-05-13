@@ -4,58 +4,38 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public class TestCanvas extends Canvas implements MouseListener, MouseMotionListener {
+public class TestCanvas extends Canvas {
 
+//mnozina objektov
+    public HashSet<Rectangle> OurObject = new HashSet<Rectangle>();
 
-    public TestCanvas(){
-        addMouseListener(this);
-        addMouseMotionListener(this);
+    public void NewObjects(){
+        int i=0;
+        int j=20;
+        while(i<5){
+            //vytvorime novy objekt
+            OurObject.add(new Rectangle(10,j,20,20));
+            j+=30;
+            i++;
+        }
+    }
+
+    public void paint(Graphics g){
+
+        Rectangle AcrRect;
+        Iterator it = OurObject.iterator();
+
+        while(it.hasNext()){
+            Object Actual  = it.next();
+            if (Actual instanceof Rectangle){
+                AcrRect = (Rectangle) Actual;
+                g.drawRect(AcrRect.x, AcrRect.y, AcrRect.width, AcrRect.height);
+            }
+        }
     }
 
 
-
-    @Override
-    //klikne a pusti na tom istom mieste
-    public void mouseClicked(MouseEvent e) {
-        System.out.println(e);
-        System.out.println("Mouse clicked (" + e.getX() +", "+ e.getY()+")");
-    }
-
-    @Override
-    //ked sa mis stlaci
-    public void mousePressed(MouseEvent e) {
-        System.out.println("som stlacena a hybem sa (" + e.getY() +", " +e.getY()+")");
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        System.out.println(e);
-    }
-
-    @Override
-    //ziseil na canvas
-    public void mouseEntered(MouseEvent e) {
-        System.out.println(e);
-    }
-
-    @Override
-    //odisiel z canvasu
-    public void mouseExited(MouseEvent e) {
-        System.out.println(e);
-    }
-
-    @Override
-    //ked je stlacene a posuvame ho
-    public void mouseDragged(MouseEvent e) {
-        System.out.println(e);
-
-    }
-
-    @Override
-    //ked sa surdnice x,y zmenia
-    public void mouseMoved(MouseEvent e) {
-        System.out.println("hybem sa (" + e.getY() +", " +e.getY()+")");
-    }
 }
